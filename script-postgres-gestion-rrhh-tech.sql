@@ -20,6 +20,8 @@ grant select, insert, update, delete, trigger on all tables in schema public to 
 -- Creación de las tablas en el esquema inicial
 -- ***********************************************
 create squema inicial;
+grant create on schema inicial to gestion_rrhh_tech_usr;
+grant select, insert, update, delete, trigger on all tables in schema inicial to gestion_rrhh_tech_usr;
 
 -- Tabla: employment_statuses
 create table inicial.employment_statuses
