@@ -1,4 +1,4 @@
--- Script PostgreSQL
+-- Script Oracle
 -- Curso de Tópicos Avanzados de base de datos - UPB 202320
 -- Samuel Pérez Hurtado ID 000459067 - Luisa María Flórez Múnera ID 000449529
 
@@ -70,3 +70,7 @@ ALTER USER "GESTION_RRHH_TECH_OPTIMIZADO" QUOTA UNLIMITED ON USERS;
 
 -- Privilegios específicos para el esquema optimizado
 GRANT CREATE TABLE TO "GESTION_RRHH_TECH_OPTIMIZADO";
+
+-- ***********************************************
+-- Creación de las tablas en el esquema inicial
+-- ***********************************************
