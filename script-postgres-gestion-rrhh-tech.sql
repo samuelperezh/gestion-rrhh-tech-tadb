@@ -26,7 +26,7 @@ grant select, insert, update, delete, trigger on all tables in schema inicial to
 -- Tabla: employment_statuses
 create table inicial.employment_statuses
 (
-    id int not null
+    id int not null,
     employment_status varchar(50) not null
 );
 
@@ -37,7 +37,7 @@ comment on column inicial.employment_statuses.employment_status is 'Estado de em
 -- Tabla: employment_types
 create table inicial.employment_types
 (
-    id int not null
+    id int not null,
     employment_type varchar(50) not null
 );
 
@@ -48,7 +48,7 @@ comment on column inicial.employment_types.employment_type is 'Tipo de empleo';
 -- Tabla: experience_levels
 create table inicial.experience_levels
 (
-    id int not null
+    id int not null,
     experience_level varchar(50) not null
 );
 
@@ -59,7 +59,7 @@ comment on column inicial.experience_levels.experience_level is 'Nivel de experi
 -- Tabla: job_titles
 create table inicial.job_titles
 (
-    id int not null
+    id int not null,
     job_title varchar(200) not null
 );
 
@@ -70,7 +70,7 @@ comment on column inicial.job_titles.job_title is 'Cargo';
 -- Tabla: company_locations
 create table inicial.company_locations
 (
-    id int not null
+    id int not null,
     location varchar(50) not null
 );
 
@@ -81,7 +81,7 @@ comment on column inicial.company_locations.location is 'Ubicación';
 -- Tabla: company_sizes
 create table inicial.company_sizes
 (
-    id int not null
+    id int not null,
     size varchar(50) not null
 );
 
@@ -92,8 +92,8 @@ comment on column inicial.company_sizes.size is 'Tamaño';
 -- Tabla: companies
 create table inicial.companies
 (
-    id int not null
-    company_location_id int not null
+    id int not null,
+    company_location_id int not null,
     company_size_id int not null
 );
 
@@ -105,7 +105,7 @@ comment on column inicial.companies.company_size_id is 'Identificador único del
 -- Tabla: remote_ratios
 create table inicial.remote_ratios
 (
-    id int not null
+    id int not null,
     remote_ratio varchar(50) not null
 );
 
@@ -116,7 +116,7 @@ comment on column inicial.remote_ratios.remote_ratio is 'Porcentaje de trabajo r
 -- Tabla: employee_residences
 create table inicial.employee_residences
 (
-    id int not null
+    id int not null,
     employee_residence varchar(50) not null
 );
 
@@ -127,15 +127,15 @@ comment on column inicial.employee_residences.employee_residence is 'Lugar de re
 -- Tabla: employees
 create table inicial.employees
 (
-    id int not null
-    experience_level_id int not null
-    employment_type_id int not null
-    job_title_id int not null
-    employment_status_id int not null
-    employment_residence_id int not null
-    remote_ratio_id int not null
-    company_id int not null
-    work_year int not null
+    id int not null,
+    experience_level_id int not null,
+    employment_type_id int not null,
+    job_title_id int not null,
+    employment_status_id int not null,
+    employment_residence_id int not null,
+    remote_ratio_id int not null,
+    company_id int not null,
+    work_year int not null,
     salary_usd int not null
 );
 
@@ -287,7 +287,7 @@ create table optimizado.employees
         constraint employees_remote_ratios_id_fk references optimizado.remote_ratios,
     company_id int not null
         constraint employees_companies_id_fk references optimizado.companies,
-    work_year int not null
+    work_year int not null,
     salary_usd int not null
 );
 
