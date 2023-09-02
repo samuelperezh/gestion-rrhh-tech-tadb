@@ -19,7 +19,7 @@ grant select, insert, update, delete, trigger on all tables in schema public to 
 -- ***********************************************
 -- Creación de las tablas en el esquema inicial
 -- ***********************************************
-create squema inicial;
+create schema inicial;
 grant create on schema inicial to gestion_rrhh_tech_usr;
 grant select, insert, update, delete, trigger on all tables in schema inicial to gestion_rrhh_tech_usr;
 
@@ -154,7 +154,7 @@ comment on column inicial.employees.salary_usd is 'Salario en dólares';
 -- ***********************************************
 -- Creación de las tablas en el esquema optimizado
 -- ***********************************************
-create squema optimizado;
+create schema optimizado;
 
 -- Tabla: employment_statuses
 create table optimizado.employment_statuses
