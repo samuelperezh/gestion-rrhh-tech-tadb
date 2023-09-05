@@ -5,25 +5,31 @@
 -- ***********************************************
 -- Consultas en el esquema inicial
 -- ***********************************************
---1 . ¿Cuál es el promedio de los salarios por nivel de experiencia y año de trabajo?
+---------- CONSULTAS ----------
+--1. ¿Cuál es el promedio de los salarios por nivel de experiencia, año de trabajo y ubicación de la empresa?
 select
     el.experience_level AS "Nivel de Experiencia",
     e.work_year AS "Año de Trabajo",
+    cl.location AS "Ubicación de la Empresa",
     ROUND(AVG(e.salary_usd)::numeric, 2) AS "Promedio de Salario"
 from inicial.employees e
 join inicial.experience_levels el ON e.experience_level_id = el.id
-group by el.experience_level, e.work_year
-order by el.experience_level, e.work_year;
+join inicial.companies c ON e.company_id = c.id
+join inicial.company_locations cl ON c.company_location_id = cl.id
+group by el.experience_level, e.work_year, cl.location
+order by el.experience_level, e.work_year, cl.location;
 
---2. ¿Cuál es la cantidad de empleados por ubicación y tamaño de Empresa?
+--2. ¿Cuál es la cantidad de empleados en estado "On Leave" por ubicación y tamaño de Empresa?
 select
     cl.location AS "Ubicación de la Empresa",
     cs.size AS "Tamaño de Empresa",
-    COUNT(e.id) AS "Cantidad de Empleados"
+    COUNT(e.id) AS "Cantidad de Empleados en Estado On Leave"
 from inicial.employees e
 join inicial.companies c ON e.company_id = c.id
 join inicial.company_locations cl ON c.company_location_id = cl.id
 join inicial.company_sizes cs ON c.company_size_id = cs.id
+join inicial.employment_statuses es ON e.employment_status_id = es.id
+where es.employment_status = 'On Leave'
 group by cl.location, cs.size
 order by cl.location, cs.size;
 
