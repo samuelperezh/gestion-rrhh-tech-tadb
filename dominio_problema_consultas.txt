@@ -1,0 +1,23 @@
+Curso de Tópicos Avanzados de base de datos - UPB 202320
+LUISA MARÍA FLÓREZ MÚNERA ID 000449529 - Samuel Pérez Hurtado ID 000459067
+
+Dominio de problema: Sistema de gestión de recursos humanos y empleos en la industria tecnológica en los años 2020, 2021 y 2022.
+
+Tablas:
+
+1. Tabla principal Employees - Almacena información sobre los empleados.
+2. ExperienceLevels - Contiene los niveles de experiencia disponibles del empleado.
+3. EmploymentTypes - Almacena los tipos de empleo posibles.
+4. JobTitles - Guarda los puesto de trabajo o puesto del empleado dentro de la empresa
+5. EmployeeResidences - Contiene los lugares de residencia de los empleados.
+6. RemoteRatios - Almacena los porcentajes de trabajo remoto permitido para el puesto.
+7. EmploymentStatuses - Guarda los estados de empleado.
+8. CompanyLocations - Contiene las ubicaciones posibles de las empresas.
+9. CompanySizes - Almacena los tamaños posibles de las empresas.
+10. Companies - Guarda información sobre las empresas.
+
+Consultas:
+1. ¿Cuál es el promedio de los salarios por nivel de experiencia, año de trabajo y ubicación de la empresa?
+2. ¿Cuál es la cantidad de empleados por ubicación y tamaño de Empresa?
+3. ¿Cuál es el análisis de empleados remotos por título de trabajo y tamaño de empresa?
+
