@@ -382,3 +382,9 @@ insert into optimizado.employees (experience_level_id, employment_type_id, job_t
 
 create index employees_remote_ratio_id_idx on optimizado.employees (remote_ratio_id);
 create index employees_employment_status_id_idx on optimizado.employees (employment_status_id);
+create index companies_id_index on optimizado.companies (id);
+create index employees_id_index on optimizado.employees (id);
+create index employees_location_index on optimizado.employees (experience_level_id,company_id,work_year,salary_usd);
+
+-- Para la implementación de las vistas y vistas materializadas, no se evidenció la necesidad de la creación de estas, debido a que 
+-- no afectaba el rendimiento en ambos motores.

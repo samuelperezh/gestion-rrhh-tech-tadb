@@ -13,7 +13,7 @@ select
     el.experience_level AS "Nivel de Experiencia",
     e.work_year AS "Año de Trabajo",
     cl.company_location AS "Ubicación de la Empresa",
-    ROUND(AVG(e.salary_usd)::numeric, 2) AS "Promedio de Salario"
+    ROUND(AVG(e.salary_usd), 2) AS "Promedio de Salario"
 from inicial.employees e
 join inicial.experience_levels el ON e.experience_level_id = el.id
 join inicial.companies c ON e.company_id = c.id
@@ -56,7 +56,7 @@ select
     el.experience_level AS "Nivel de Experiencia",
     e.work_year AS "Año de Trabajo",
     cl.company_location AS "Ubicación de la Empresa",
-    ROUND(AVG(e.salary_usd)::numeric, 2) AS "Promedio de Salario"
+    ROUND(AVG(e.salary_usd), 2) AS "Promedio de Salario"
 from optimizado.employees e
 join optimizado.experience_levels el ON e.experience_level_id = el.id
 join optimizado.companies c ON e.company_id = c.id
