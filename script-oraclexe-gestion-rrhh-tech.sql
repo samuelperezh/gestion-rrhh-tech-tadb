@@ -9,67 +9,67 @@
 alter session set container=xepdb1;
 
 -- Creación del usuario
-create user "gestion_rrhh_tech_usr" identified by "gestion_rrhh"  
-default tablespace users
-temporary tablespace temp;
+CREATE USER GESTION_RRHH_TECH_USR IDENTIFIED BY "gestion_rrhh"  
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP;
 
 -- Privilegios
-grant create session to "gestion_rrhh_tech_usr";
-grant alter session to "gestion_rrhh_tech_usr";
+GRANT CREATE SESSION TO GESTION_RRHH_TECH_USR;
+GRANT ALTER SESSION TO GESTION_RRHH_TECH_USR;
 
-grant create any table to "gestion_rrhh_tech_usr";
-grant alter any table to "gestion_rrhh_tech_usr";
-grant drop any table to "gestion_rrhh_tech_usr";
-grant comment any table to "gestion_rrhh_tech_usr";
-grant read any table to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT ALTER ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT COMMENT ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT READ ANY TABLE TO GESTION_RRHH_TECH_USR;
 
-grant select any table to "gestion_rrhh_tech_usr";
-grant insert any table to "gestion_rrhh_tech_usr";
-grant update any table to "gestion_rrhh_tech_usr";
-grant delete any table to "gestion_rrhh_tech_usr";
+GRANT SELECT ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT INSERT ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT UPDATE ANY TABLE TO GESTION_RRHH_TECH_USR;
+GRANT DELETE ANY TABLE TO GESTION_RRHH_TECH_USR;
 
-grant create any view to "gestion_rrhh_tech_usr";
-grant drop any view to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY VIEW TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY VIEW TO GESTION_RRHH_TECH_USR;
 
-grant create any index to "gestion_rrhh_tech_usr";
-grant alter any index to "gestion_rrhh_tech_usr";
-grant drop any index to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY INDEX TO GESTION_RRHH_TECH_USR;
+GRANT ALTER ANY INDEX TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY INDEX TO GESTION_RRHH_TECH_USR;
 
-grant create any trigger to "gestion_rrhh_tech_usr";
-grant alter any trigger to "gestion_rrhh_tech_usr";
-grant drop any trigger to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY TRIGGER TO GESTION_RRHH_TECH_USR;
+GRANT ALTER ANY TRIGGER TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY TRIGGER TO GESTION_RRHH_TECH_USR;
 
-grant alter any procedure to "gestion_rrhh_tech_usr";
-grant create any procedure to "gestion_rrhh_tech_usr";
-grant debug any procedure to "gestion_rrhh_tech_usr";
-grant drop any procedure to "gestion_rrhh_tech_usr";
-grant execute any procedure to "gestion_rrhh_tech_usr";
+GRANT ALTER ANY PROCEDURE TO GESTION_RRHH_TECH_USR;
+GRANT CREATE ANY PROCEDURE TO GESTION_RRHH_TECH_USR;
+GRANT DEBUG ANY PROCEDURE TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY PROCEDURE TO GESTION_RRHH_TECH_USR;
+GRANT EXECUTE ANY PROCEDURE TO GESTION_RRHH_TECH_USR;
 
-grant create any sequence to "gestion_rrhh_tech_usr";
-grant alter any sequence to "gestion_rrhh_tech_usr";
-grant drop any sequence to "gestion_rrhh_tech_usr";
-grant select any sequence to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY SEQUENCE TO GESTION_RRHH_TECH_USR;
+GRANT ALTER ANY SEQUENCE TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY SEQUENCE TO GESTION_RRHH_TECH_USR;
+GRANT SELECT ANY SEQUENCE TO GESTION_RRHH_TECH_USR;
 
-grant create any materialized view to "gestion_rrhh_tech_usr";
-grant alter any materialized view to "gestion_rrhh_tech_usr";
-grant drop any materialized view to "gestion_rrhh_tech_usr";
+GRANT CREATE ANY MATERIALIZED VIEW TO GESTION_RRHH_TECH_USR;
+GRANT ALTER ANY MATERIALIZED VIEW TO GESTION_RRHH_TECH_USR;
+GRANT DROP ANY MATERIALIZED VIEW TO GESTION_RRHH_TECH_USR;
 
-grant select any dictionary to "gestion_rrhh_tech_usr";
+GRANT SELECT ANY DICTIONARY TO GESTION_RRHH_TECH_USR;
 
 -- Creación del esquema inicial
-create user "inicial" identified by "gestion_rrhh"  
-default tablespace users
-temporary tablespace temp;
-alter user "inicial" quota unlimited on users;
+CREATE USER INICIAL IDENTIFIED BY "gestion_rrhh"  
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP;
+ALTER USER INICIAL QUOTA UNLIMITED ON USERS;
 
 -- Creación del esquema optimizado
-create user "optimizado" identified by "gestion_rrhh"  
-default tablespace users
-temporary tablespace temp;
-alter user "optimizado" quota unlimited on users;
+CREATE USER OPTIMIZADO IDENTIFIED BY "gestion_rrhh"  
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP;
+ALTER USER OPTIMIZADO QUOTA UNLIMITED ON USERS;
 
 -- Privilegios específicos para el esquema optimizado
-grant create table to "optimizado";
+GRANT CREATE TABLE TO OPTIMIZADO;
 
 -- ***********************************************
 -- Creación de las tablas en el esquema inicial
@@ -394,7 +394,7 @@ insert into optimizado.employee_residences (id, employee_residence)
 -- Tabla: employees
 create table optimizado.employees
 (
-    id number not null generated always as identity,
+    id number generated always as identity not null,
     experience_level_id number not null,
     employment_type_id number not null,
     job_title_id number not null,
@@ -431,3 +431,10 @@ insert into optimizado.employees (experience_level_id, employment_type_id, job_t
     select experience_level_id, employment_type_id, job_title_id, employment_status_id, employee_residence_id, remote_ratio_id, company_id, work_year, salary_usd
     from inicial.employees
 );
+
+-- ***********************************************
+-- Creación de índices para mejorar el desempeño
+-- ***********************************************
+
+create index employees_remote_ratio_id_idx on optimizado.employees (remote_ratio_id);
+create index employees_employment_status_id_idx on optimizado.employees (employment_status_id);

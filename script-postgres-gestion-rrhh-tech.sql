@@ -375,3 +375,10 @@ insert into optimizado.employees (experience_level_id, employment_type_id, job_t
     select experience_level_id, employment_type_id, job_title_id, employment_status_id, employee_residence_id, remote_ratio_id, company_id, work_year, salary_usd
     from inicial.employees
 );
+
+-- ***********************************************
+-- Creación de índices para mejorar el desempeño
+-- ***********************************************
+
+create index employees_remote_ratio_id_idx on optimizado.employees (remote_ratio_id);
+create index employees_employment_status_id_idx on optimizado.employees (employment_status_id);
